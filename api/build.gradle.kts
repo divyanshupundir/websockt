@@ -5,8 +5,6 @@ plugins {
     id("com.vanniktech.maven.publish.base")
 }
 
-version = Config.version
-
 kotlin {
     explicitApi()
 }

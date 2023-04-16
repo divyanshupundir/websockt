@@ -19,6 +19,7 @@ apply(plugin = "com.vanniktech.maven.publish.base")
 
 allprojects {
     group = Config.group
+    version = Config.version
 
     tasks.withType<JavaCompile> {
         sourceCompatibility = Config.javaVersion.toString()

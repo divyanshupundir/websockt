@@ -1,6 +1,6 @@
-package com.divpundir.okhttpx.websocket
+package com.divpundir.okhttpx.websocket.api
 
-public object WebSocketCloseCodes {
+public object WebSocketCloseCode {
 
     /**
      * 1000 indicates a normal closure, meaning whatever purpose the connection was established for has been fulfilled.
