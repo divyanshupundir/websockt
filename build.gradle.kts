@@ -42,7 +42,7 @@ allprojects {
                 description.set("An easier-to-use okhttp websocket client.")
                 name.set(project.name)
                 inceptionYear.set("2023")
-                url.set("https://github.com/divyanshupundir/okhttpx-websocket/")
+                url.set("https://github.com/divyanshupundir/websockt/")
 
                 licenses {
                     license {
@@ -53,9 +53,9 @@ allprojects {
                 }
 
                 scm {
-                    url.set("https://github.com/divyanshupundir/okhttpx-websocket/")
-                    connection.set("scm:git:git://github.com/divyanshupundir/okhttpx-websocket.git")
-                    developerConnection.set("scm:git:ssh://git@github.com/divyanshupundir/okhttpx-websocket.git")
+                    url.set("https://github.com/divyanshupundir/websockt/")
+                    connection.set("scm:git:git://github.com/divyanshupundir/websockt.git")
+                    developerConnection.set("scm:git:ssh://git@github.com/divyanshupundir/websockt.git")
                 }
 
                 developers {

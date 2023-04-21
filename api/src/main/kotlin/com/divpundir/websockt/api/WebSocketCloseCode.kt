@@ -1,4 +1,4 @@
-package com.divpundir.okhttpx.websocket.api
+package com.divpundir.websockt.api
 
 public object WebSocketCloseCode {
 

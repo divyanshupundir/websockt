@@ -17,6 +17,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "okhttpx-websocket-root"
+rootProject.name = "websockt-root"
 
 include("api")
