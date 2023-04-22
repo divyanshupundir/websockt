@@ -1,19 +1,42 @@
 package com.divpundir.websockt
 
-public interface WebSocketClient {
+public class WebSocketClient(
+    private val factory: WebSocketFactory,
+    private val listener: WebSocket.Listener
+) {
+    @Volatile private var state: State = State.Inactive
+        @Synchronized get
+        @Synchronized set
 
-    public val state: State
+    public fun open(url: String) {
+        val s = state
+        if (s is State.Active) {
+            s.socket.close()
+        }
 
-    public fun open(url: String)
+        val socket = factory.create(url, listener)
+        state = State.Active(socket)
+    }
 
-    public fun send(payload: String)
+    public fun send(payload: String) {
+        val s = state
+        if (s is State.Active) {
+            s.socket.send(payload)
+        }
+    }
 
-    public fun close(code: Int = 1000, reason: String? = null)
+    public fun close(code: Int = 1000, reason: String? = null) {
+        val s = state
+        if (s is State.Active) {
+            s.socket.close(code, reason)
+            state = State.Inactive
+        }
+    }
 
-    public sealed interface State {
+    private sealed interface State {
 
-        public object Active : State
+        class Active(val socket: WebSocket) : State
 
-        public object Inactive : State
+        object Inactive : State
     }
 }
