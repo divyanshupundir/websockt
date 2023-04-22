@@ -1,6 +1,6 @@
 package com.divpundir.websockt.engine.okhttp
 
-import com.divpundir.websockt.api.WebSocket
+import com.divpundir.websockt.WebSocket
 import okhttp3.Response
 import okhttp3.WebSocketListener
 import okhttp3.WebSocket as DelegateSocket

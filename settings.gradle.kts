@@ -19,5 +19,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "websockt-root"
 
-include("api")
+include("websockt")
 include("engine-okhttp")

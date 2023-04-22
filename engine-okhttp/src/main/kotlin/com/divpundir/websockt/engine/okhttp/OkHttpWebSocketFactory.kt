@@ -1,7 +1,7 @@
 package com.divpundir.websockt.engine.okhttp
 
-import com.divpundir.websockt.api.WebSocket
-import com.divpundir.websockt.api.WebSocketFactory
+import com.divpundir.websockt.WebSocket
+import com.divpundir.websockt.WebSocketFactory
 import okhttp3.OkHttpClient
 import okhttp3.Request
 

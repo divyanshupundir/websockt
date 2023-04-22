@@ -14,7 +14,7 @@ tasks.test {
 }
 
 dependencies {
-    implementation(project(":api"))
+    implementation(project(":websockt"))
     implementation(Deps.okhttp)
 
     testImplementation(TestDeps.Jupiter.api)
