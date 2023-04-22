@@ -8,7 +8,7 @@ public interface WebSocket {
 
     public fun close(code: Int = 1000, reason: String? = null)
 
-    public interface Event {
+    public sealed interface Event {
 
         public object Open : Event
 
@@ -19,5 +19,10 @@ public interface WebSocket {
         public data class Close(val code: Int, val reason: String) : Event
 
         public data class Failure(val t: Throwable) : Event
+    }
+
+    public fun interface Listener {
+
+        public fun onEvent(event: Event)
     }
 }

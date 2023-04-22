@@ -14,8 +14,6 @@ tasks.test {
 }
 
 dependencies {
-    implementation(Deps.okhttp)
-
     testImplementation(TestDeps.Jupiter.api)
     testRuntimeOnly(TestDeps.Jupiter.engine)
 }
