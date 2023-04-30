@@ -2,7 +2,7 @@ package com.divpundir.websockt
 
 public class WebSocketClient(
     private val factory: WebSocketFactory,
-    private val listener: WebSocket.Listener
+    private val listener: WebSocketEvent.Listener
 ) {
     @Volatile private var state: State = State.Inactive
         @Synchronized get
