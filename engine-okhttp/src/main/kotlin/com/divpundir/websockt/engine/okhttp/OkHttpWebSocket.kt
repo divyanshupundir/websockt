@@ -5,8 +5,6 @@ import okhttp3.WebSocket as DelegateSocket
 
 internal class OkHttpWebSocket(private val socket: DelegateSocket) : WebSocket {
 
-    override val url: String = socket.request().url.toString()
-
     override fun send(payload: String) {
         socket.send(payload)
     }
