@@ -69,3 +69,25 @@ allprojects {
         }
     }
 }
+
+task("publishAll") {
+    dependsOn(
+        ":websockt:publish",
+        ":engine-okhttp:publish"
+    )
+}
+
+task("closeAndReleaseAll") {
+    dependsOn(
+        ":websockt:closeAndReleaseRepository",
+        ":engine-okhttp:closeAndReleaseRepository"
+    )
+}
+
+task("createGitTag") {
+    doLast {
+        val tagName = "v${Config.version}"
+        exec { commandLine("git", "tag", tagName) }
+        exec { commandLine("git", "push", "origin", tagName) }
+    }
+}
