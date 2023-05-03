@@ -2,12 +2,10 @@
 
 Websockt is a simple WebSocket client library for Kotlin.
 
-It is currently in the experimental stage. It is not recommended for production use.
+## Overview
 
-## Goals
-
-- Provide a simple API for sending and receiving messages
-- Manage the connection state for the user
-- Automatically reconnect when the connection is lost or provide an API to do so easily
-- Support major http libraries like OkHttp and Ktor
-- Provide an adapter based system to support RxJava and Coroutines
+Apart from sending and receiving messages, Websockt provides the following features:
+- WebSocket connection state management
+- A simple `onFailure` callback to implement custom reconnection strategies
+- Abstraction over different HTTP libraries (currently OkHttp) so that you can fit it with your existing stack
+- Lightweight RxJava and Coroutines adapters
