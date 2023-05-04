@@ -19,11 +19,11 @@ public class OkHttpWebSocketListener(
     }
 
     override fun onClosing(webSocket: DelegateSocket, code: Int, reason: String) {
-        onEvent.onEvent(WebSocket.Event.Closing(code, reason))
+        onEvent.onEvent(WebSocket.Event.Closing(code, reason.ifBlank { null }))
     }
 
     override fun onClosed(webSocket: DelegateSocket, code: Int, reason: String) {
-        onEvent.onEvent(WebSocket.Event.Close(code, reason))
+        onEvent.onEvent(WebSocket.Event.Close(code, reason.ifBlank { null }))
     }
 
     override fun onFailure(webSocket: DelegateSocket, t: Throwable, response: Response?) {
