@@ -21,3 +21,4 @@ rootProject.name = "websockt-root"
 
 include("websockt")
 include("engine-okhttp")
+include("adapter-rxjava2")
