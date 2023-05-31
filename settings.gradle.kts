@@ -4,7 +4,7 @@ pluginManagement {
         mavenCentral()
     }
     plugins {
-        kotlin("jvm") version "1.8.20"
+        kotlin("jvm") version "1.8.21"
         id("com.vanniktech.maven.publish") version "0.25.1"
     }
 }
@@ -21,3 +21,5 @@ rootProject.name = "websockt-root"
 
 include("websockt")
 include("engine-okhttp")
+include("adapter-rxjava2")
+include("adapter-rxjava3")
