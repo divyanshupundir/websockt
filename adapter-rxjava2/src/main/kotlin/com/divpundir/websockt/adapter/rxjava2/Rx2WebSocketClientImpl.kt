@@ -7,7 +7,7 @@ import com.divpundir.websockt.createClient
 import io.reactivex.Flowable
 import io.reactivex.processors.PublishProcessor
 
-public class Rx2WebSocketClientImpl(
+internal class Rx2WebSocketClientImpl(
     factory: WebSocketFactory,
     onFailure: WebSocketClient.FailureListener,
 ) : Rx2WebSocketClient {
@@ -34,11 +34,3 @@ public class Rx2WebSocketClientImpl(
         delegate.close(code, reason)
     }
 }
-
-public fun WebSockt.createRx2Client(
-    factory: WebSocketFactory,
-    onFailure: WebSocketClient.FailureListener,
-): Rx2WebSocketClient = Rx2WebSocketClientImpl(
-    factory,
-    onFailure
-)
