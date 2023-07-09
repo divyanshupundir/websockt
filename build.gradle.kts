@@ -73,14 +73,18 @@ allprojects {
 task("publishAll") {
     dependsOn(
         ":websockt:publish",
-        ":engine-okhttp:publish"
+        ":engine-okhttp:publish",
+        ":adapter-rxjava2:publish",
+        ":adapter-rxjava3:publish"
     )
 }
 
 task("closeAndReleaseAll") {
     dependsOn(
         ":websockt:closeAndReleaseRepository",
-        ":engine-okhttp:closeAndReleaseRepository"
+        ":engine-okhttp:closeAndReleaseRepository",
+        ":adapter-rxjava2:closeAndReleaseRepository",
+        ":adapter-rxjava3:closeAndReleaseRepository"
     )
 }
 
