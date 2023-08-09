@@ -2,12 +2,13 @@ package com.divpundir.websockt.engine.okhttp
 
 import com.divpundir.websockt.WebSocket
 import okhttp3.Response
+import okio.ByteString
 import okhttp3.WebSocket as DelegateSocket
 import okhttp3.WebSocketListener as DelegateListener
 
 public class OkHttpWebSocketListener(
     private val onFailure: WebSocket.FailureListener,
-    private val onEvent: WebSocket.Event.Listener
+    private val onEvent: WebSocket.Event.Listener,
 ) : DelegateListener() {
 
     override fun onOpen(webSocket: DelegateSocket, response: Response) {
@@ -15,7 +16,11 @@ public class OkHttpWebSocketListener(
     }
 
     override fun onMessage(webSocket: DelegateSocket, text: String) {
-        onEvent.onEvent(WebSocket.Event.Message(text))
+        onEvent.onEvent(WebSocket.Event.Message.Text(text))
+    }
+
+    override fun onMessage(webSocket: DelegateSocket, bytes: ByteString) {
+        onEvent.onEvent(WebSocket.Event.Message.Bytes(bytes.toByteArray()))
     }
 
     override fun onClosing(webSocket: DelegateSocket, code: Int, reason: String) {

@@ -12,11 +12,30 @@ public interface WebSocketClient {
 
         public object Open : Event
 
-        public data class Message(val payload: String) : Event
-
         public data class Closing(val code: Int, val reason: String?) : Event
 
         public data class Close(val code: Int, val reason: String?) : Event
+
+        public sealed interface Message : Event {
+
+            public data class Text(val payload: String) : Message
+
+            public data class Bytes(val payload: ByteArray) : Message {
+
+                override fun equals(other: Any?): Boolean {
+                    if (this === other) return true
+                    if (javaClass != other?.javaClass) return false
+
+                    other as Bytes
+
+                    return payload.contentEquals(other.payload)
+                }
+
+                override fun hashCode(): Int {
+                    return payload.contentHashCode()
+                }
+            }
+        }
 
         public fun interface Listener {
 

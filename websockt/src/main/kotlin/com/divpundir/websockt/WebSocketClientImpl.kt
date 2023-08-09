@@ -3,7 +3,7 @@ package com.divpundir.websockt
 internal class WebSocketClientImpl(
     private val factory: WebSocketFactory,
     private val onFailure: WebSocketClient.FailureListener,
-    private val onEvent: WebSocketClient.Event.Listener
+    private val onEvent: WebSocketClient.Event.Listener,
 ) : WebSocketClient {
 
     @Volatile
@@ -23,9 +23,14 @@ internal class WebSocketClientImpl(
             onEvent = {
                 when (it) {
                     is WebSocket.Event.Open -> onEvent.onEvent(WebSocketClient.Event.Open)
-                    is WebSocket.Event.Message -> onEvent.onEvent(WebSocketClient.Event.Message(it.payload))
                     is WebSocket.Event.Closing -> onEvent.onEvent(WebSocketClient.Event.Closing(it.code, it.reason))
                     is WebSocket.Event.Close -> onEvent.onEvent(WebSocketClient.Event.Close(it.code, it.reason))
+                    is WebSocket.Event.Message -> {
+                        when (it) {
+                            is WebSocket.Event.Message.Text -> onEvent.onEvent(WebSocketClient.Event.Message.Text(it.payload))
+                            is WebSocket.Event.Message.Bytes -> onEvent.onEvent(WebSocketClient.Event.Message.Bytes(it.payload))
+                        }
+                    }
                 }
             }
         )
