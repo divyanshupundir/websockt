@@ -44,6 +44,13 @@ internal class WebSocktClientImpl(
         }
     }
 
+    override fun send(payload: ByteArray) {
+        val s = state
+        if (s is State.Active) {
+            s.socket.send(payload)
+        }
+    }
+
     override fun close(code: Int, reason: String?) {
         val s = state
         if (s is State.Active) {

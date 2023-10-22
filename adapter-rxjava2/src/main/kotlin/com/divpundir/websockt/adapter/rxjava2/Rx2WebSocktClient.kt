@@ -17,5 +17,8 @@ public interface Rx2WebSocktClient {
     public fun send(payload: String): Completable
 
     @CheckReturnValue
+    public fun send(payload: ByteArray): Completable
+
+    @CheckReturnValue
     public fun close(code: Int = 1000, reason: String? = null): Completable
 }
