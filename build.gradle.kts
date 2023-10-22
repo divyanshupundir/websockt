@@ -70,7 +70,8 @@ task("publishAll") {
         ":websockt:publish",
         ":engine-okhttp:publish",
         ":adapter-rxjava2:publish",
-        ":adapter-rxjava3:publish"
+        ":adapter-rxjava3:publish",
+        ":adapter-coroutines:publish"
     )
 }
 
@@ -79,7 +80,8 @@ task("closeAndReleaseAll") {
         ":websockt:closeAndReleaseRepository",
         ":engine-okhttp:closeAndReleaseRepository",
         ":adapter-rxjava2:closeAndReleaseRepository",
-        ":adapter-rxjava3:closeAndReleaseRepository"
+        ":adapter-rxjava3:closeAndReleaseRepository",
+        ":adapter-coroutines:closeAndReleaseRepository"
     )
 }
 
