@@ -6,8 +6,7 @@ import okio.ByteString
 import okhttp3.WebSocket as DelegateSocket
 import okhttp3.WebSocketListener as DelegateListener
 
-public class OkHttpWebSocketListener(
-    private val onFailure: WebSocket.FailureListener,
+internal class OkHttpWebSocketListener(
     private val onEvent: WebSocket.Event.Listener,
 ) : DelegateListener() {
 
@@ -32,6 +31,6 @@ public class OkHttpWebSocketListener(
     }
 
     override fun onFailure(webSocket: DelegateSocket, t: Throwable, response: Response?) {
-        onFailure.onFailure(t)
+        onEvent.onEvent(WebSocket.Event.Failure(t))
     }
 }

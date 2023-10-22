@@ -8,15 +8,13 @@ import io.reactivex.Flowable
 import io.reactivex.processors.PublishProcessor
 
 internal class Rx2WebSocketClientImpl(
-    factory: WebSocketFactory,
-    onFailure: WebSocketClient.FailureListener,
+    factory: WebSocketFactory
 ) : Rx2WebSocketClient {
 
     private val _event = PublishProcessor.create<WebSocketClient.Event>()
 
     private val delegate = WebSockt.createClient(
         factory = factory,
-        onFailure = onFailure,
         onEvent = _event::onNext
     )
 

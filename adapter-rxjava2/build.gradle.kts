@@ -12,7 +12,7 @@ kotlin {
 
 dependencies {
     implementation(project(":websockt"))
-    implementation(libs.reactivex.rxjava3)
+    implementation(libs.reactivex.rxjava2)
 
     testImplementation(testlibs.jupiter.api)
     testRuntimeOnly(testlibs.jupiter.engine)

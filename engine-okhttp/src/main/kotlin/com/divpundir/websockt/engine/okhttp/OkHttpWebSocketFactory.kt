@@ -11,7 +11,6 @@ public class OkHttpWebSocketFactory(
 
     override fun create(
         url: String,
-        onFailure: WebSocket.FailureListener,
         onEvent: WebSocket.Event.Listener
     ): WebSocket {
         val request = Request.Builder()
@@ -20,7 +19,7 @@ public class OkHttpWebSocketFactory(
 
         val socket = httpClient.newWebSocket(
             request,
-            OkHttpWebSocketListener(onFailure, onEvent)
+            OkHttpWebSocketListener(onEvent)
         )
 
         return OkHttpWebSocket(socket)
