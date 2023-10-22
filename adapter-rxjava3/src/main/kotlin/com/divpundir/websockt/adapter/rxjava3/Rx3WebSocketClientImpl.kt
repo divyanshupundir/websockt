@@ -18,7 +18,7 @@ internal class Rx3WebSocketClientImpl(
         onEvent = _event::onNext
     )
 
-    override val event: Flowable<WebSocketClient.Event> = _event.onBackpressureBuffer().share()
+    override val event: Flowable<WebSocketClient.Event> = _event.onBackpressureDrop().share()
 
     override fun open(url: String) {
         delegate.open(url)
