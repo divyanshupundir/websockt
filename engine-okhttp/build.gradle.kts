@@ -1,24 +1,21 @@
 import com.vanniktech.maven.publish.KotlinJvm
 
 plugins {
-    kotlin("jvm")
-    id("com.vanniktech.maven.publish.base")
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.mavenpublish)
+    alias(libs.plugins.dokka)
 }
 
 kotlin {
     explicitApi()
 }
 
-tasks.test {
-    useJUnitPlatform()
-}
-
 dependencies {
     implementation(project(":websockt"))
-    implementation(Deps.okhttp)
+    implementation(libs.okhttp)
 
-    testImplementation(TestDeps.Jupiter.api)
-    testRuntimeOnly(TestDeps.Jupiter.engine)
+    testImplementation(testlibs.jupiter.api)
+    testRuntimeOnly(testlibs.jupiter.engine)
 }
 
 @Suppress("UnstableApiUsage")
