@@ -1,0 +1,13 @@
+[versions]
+kotlin = "1.9.10"
+
+[libraries]
+reactivex-rxjava2 = "io.reactivex.rxjava2:rxjava:2.2.21"
+reactivex-rxjava3 = "io.reactivex.rxjava3:rxjava:3.1.6"
+
+okhttp = "com.squareup.okhttp3:okhttp:4.10.0"
+
+[plugins]
+dokka = { id = "org.jetbrains.dokka", version = "1.9.10" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+mavenpublish = { id = "com.vanniktech.maven.publish.base", version = "0.24.0" }
