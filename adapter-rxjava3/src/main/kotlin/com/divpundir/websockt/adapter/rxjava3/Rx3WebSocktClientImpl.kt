@@ -27,6 +27,10 @@ internal class Rx3WebSocktClientImpl(
         delegate.send(payload)
     }
 
+    override fun send(payload: ByteArray): Completable = Completable.fromAction {
+        delegate.send(payload)
+    }
+
     override fun close(code: Int, reason: String?): Completable = Completable.fromAction {
         delegate.close(code, reason)
     }

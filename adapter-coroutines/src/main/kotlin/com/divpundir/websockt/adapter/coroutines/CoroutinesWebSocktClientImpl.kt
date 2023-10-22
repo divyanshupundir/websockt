@@ -34,6 +34,10 @@ internal class CoroutinesWebSocktClientImpl(
         delegate.send(payload)
     }
 
+    override suspend fun send(payload: ByteArray) {
+        delegate.send(payload)
+    }
+
     override suspend fun close(code: Int, reason: String?) {
         delegate.close(code, reason)
     }

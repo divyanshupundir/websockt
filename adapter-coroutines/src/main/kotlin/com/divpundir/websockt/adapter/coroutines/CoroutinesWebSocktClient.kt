@@ -11,5 +11,7 @@ public interface CoroutinesWebSocktClient {
 
     public suspend fun send(payload: String)
 
+    public suspend fun send(payload: ByteArray)
+
     public suspend fun close(code: Int = 1000, reason: String? = null)
 }
