@@ -1,11 +1,11 @@
 package com.divpundir.websockt.adapter.coroutines
 
-import com.divpundir.websockt.WebSocketClient
+import com.divpundir.websockt.WebSocktClient
 import kotlinx.coroutines.flow.SharedFlow
 
-public interface CoroutinesWebSocketClient {
+public interface CoroutinesWebSocktClient {
 
-    public val event: SharedFlow<WebSocketClient.Event>
+    public val event: SharedFlow<WebSocktClient.Event>
 
     public suspend fun open(url: String)
 

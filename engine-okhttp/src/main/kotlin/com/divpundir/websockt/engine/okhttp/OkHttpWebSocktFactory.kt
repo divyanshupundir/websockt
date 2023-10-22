@@ -1,27 +1,27 @@
 package com.divpundir.websockt.engine.okhttp
 
-import com.divpundir.websockt.WebSocket
-import com.divpundir.websockt.WebSocketFactory
+import com.divpundir.websockt.WebSockt
+import com.divpundir.websockt.WebSocktFactory
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
-public class OkHttpWebSocketFactory(
+public class OkHttpWebSocktFactory(
     private val httpClient: OkHttpClient
-) : WebSocketFactory {
+) : WebSocktFactory {
 
     override fun create(
         url: String,
-        onEvent: WebSocket.Event.Listener
-    ): WebSocket {
+        onEvent: WebSockt.Event.Listener
+    ): WebSockt {
         val request = Request.Builder()
             .url(url)
             .build()
 
         val socket = httpClient.newWebSocket(
             request,
-            OkHttpWebSocketListener(onEvent)
+            OkHttpWebSocktListener(onEvent)
         )
 
-        return OkHttpWebSocket(socket)
+        return OkHttpWebSockt(socket)
     }
 }

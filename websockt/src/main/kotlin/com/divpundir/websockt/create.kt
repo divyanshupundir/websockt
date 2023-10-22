@@ -1,9 +1,9 @@
 package com.divpundir.websockt
 
-public fun WebSockt.createClient(
-    factory: WebSocketFactory,
-    onEvent: WebSocketClient.Event.Listener
-): WebSocketClient = WebSocketClientImpl(
+public fun WebSocktClient(
+    factory: WebSocktFactory,
+    onEvent: WebSocktClient.Event.Listener
+): WebSocktClient = WebSocktClientImpl(
     factory = factory,
     onEvent = onEvent
 )

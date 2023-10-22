@@ -1,9 +1,9 @@
 package com.divpundir.websockt
 
-internal class WebSocketClientImpl(
-    private val factory: WebSocketFactory,
-    private val onEvent: WebSocketClient.Event.Listener,
-) : WebSocketClient {
+internal class WebSocktClientImpl(
+    private val factory: WebSocktFactory,
+    private val onEvent: WebSocktClient.Event.Listener,
+) : WebSocktClient {
 
     @Volatile
     private var state: State = State.Inactive
@@ -20,14 +20,14 @@ internal class WebSocketClientImpl(
             url,
             onEvent = {
                 when (it) {
-                    is WebSocket.Event.Open -> onEvent.onEvent(WebSocketClient.Event.Open)
-                    is WebSocket.Event.Closing -> onEvent.onEvent(WebSocketClient.Event.Closing(it.code, it.reason))
-                    is WebSocket.Event.Close -> onEvent.onEvent(WebSocketClient.Event.Close(it.code, it.reason))
-                    is WebSocket.Event.Failure -> onEvent.onEvent(WebSocketClient.Event.Failure(it.cause))
-                    is WebSocket.Event.Message -> {
+                    is WebSockt.Event.Open -> onEvent.onEvent(WebSocktClient.Event.Open)
+                    is WebSockt.Event.Closing -> onEvent.onEvent(WebSocktClient.Event.Closing(it.code, it.reason))
+                    is WebSockt.Event.Close -> onEvent.onEvent(WebSocktClient.Event.Close(it.code, it.reason))
+                    is WebSockt.Event.Failure -> onEvent.onEvent(WebSocktClient.Event.Failure(it.cause))
+                    is WebSockt.Event.Message -> {
                         when (it) {
-                            is WebSocket.Event.Message.Text -> onEvent.onEvent(WebSocketClient.Event.Message.Text(it.payload))
-                            is WebSocket.Event.Message.Bytes -> onEvent.onEvent(WebSocketClient.Event.Message.Bytes(it.payload))
+                            is WebSockt.Event.Message.Text -> onEvent.onEvent(WebSocktClient.Event.Message.Text(it.payload))
+                            is WebSockt.Event.Message.Bytes -> onEvent.onEvent(WebSocktClient.Event.Message.Bytes(it.payload))
                         }
                     }
                 }
@@ -54,7 +54,7 @@ internal class WebSocketClientImpl(
 
     private sealed interface State {
 
-        class Active(val socket: WebSocket) : State
+        class Active(val socket: WebSockt) : State
 
         data object Inactive : State
     }
