@@ -12,7 +12,6 @@ import io.reactivex.rxjava3.processors.PublishProcessor
 
 internal class Rx3WebSocketClientImpl(
     factory: WebSocketFactory,
-    private val scheduler: Scheduler
 ) : Rx3WebSocketClient {
 
     private val _event = PublishProcessor.create<WebSocketClient.Event>()
@@ -24,18 +23,15 @@ internal class Rx3WebSocketClientImpl(
 
     override val event: Flowable<WebSocketClient.Event> = _event.onBackpressureDrop().share()
 
-    override fun open(url: String): Completable = completableSubscribeOn(scheduler) {
+    override fun open(url: String): Completable = Completable.fromAction {
         delegate.open(url)
     }
 
-    override fun send(payload: String): Completable = completableSubscribeOn(scheduler) {
+    override fun send(payload: String): Completable = Completable.fromAction {
         delegate.send(payload)
     }
 
-    override fun close(code: Int, reason: String?): Completable = completableSubscribeOn(scheduler) {
+    override fun close(code: Int, reason: String?): Completable = Completable.fromAction {
         delegate.close(code, reason)
     }
 }
-
-private fun completableSubscribeOn(scheduler: Scheduler, action: Action): Completable =
-    Completable.fromAction(action).subscribeOn(scheduler)
