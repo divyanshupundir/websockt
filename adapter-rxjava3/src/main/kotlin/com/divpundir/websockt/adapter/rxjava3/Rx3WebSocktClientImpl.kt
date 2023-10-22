@@ -1,27 +1,23 @@
 package com.divpundir.websockt.adapter.rxjava3
 
-import com.divpundir.websockt.WebSocketClient
-import com.divpundir.websockt.WebSocketFactory
-import com.divpundir.websockt.WebSockt
-import com.divpundir.websockt.createClient
+import com.divpundir.websockt.WebSocktClient
+import com.divpundir.websockt.WebSocktFactory
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.core.Scheduler
-import io.reactivex.rxjava3.functions.Action
 import io.reactivex.rxjava3.processors.PublishProcessor
 
-internal class Rx3WebSocketClientImpl(
-    factory: WebSocketFactory,
-) : Rx3WebSocketClient {
+internal class Rx3WebSocktClientImpl(
+    factory: WebSocktFactory,
+) : Rx3WebSocktClient {
 
-    private val _event = PublishProcessor.create<WebSocketClient.Event>()
+    private val _event = PublishProcessor.create<WebSocktClient.Event>()
 
-    private val delegate = WebSockt.createClient(
+    private val delegate = WebSocktClient(
         factory = factory,
         onEvent = _event::onNext
     )
 
-    override val event: Flowable<WebSocketClient.Event> = _event.onBackpressureDrop().share()
+    override val event: Flowable<WebSocktClient.Event> = _event.onBackpressureDrop().share()
 
     override fun open(url: String): Completable = Completable.fromAction {
         delegate.open(url)

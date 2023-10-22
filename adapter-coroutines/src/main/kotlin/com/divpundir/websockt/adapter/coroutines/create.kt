@@ -1,13 +1,12 @@
 package com.divpundir.websockt.adapter.coroutines
 
-import com.divpundir.websockt.WebSocketFactory
-import com.divpundir.websockt.WebSockt
+import com.divpundir.websockt.WebSocktFactory
 import kotlinx.coroutines.CoroutineScope
 
-public fun WebSockt.createCoroutinesClient(
-    factory: WebSocketFactory,
+public fun CoroutinesWebSocktClient(
+    factory: WebSocktFactory,
     scope: CoroutineScope
-): CoroutinesWebSocketClient = CoroutinesWebSocketClientImpl(
+): CoroutinesWebSocktClient = CoroutinesWebSocktClientImpl(
     factory,
     scope
 )

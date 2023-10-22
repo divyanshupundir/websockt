@@ -1,6 +1,6 @@
 package com.divpundir.websockt
 
-public interface WebSocketClient {
+public interface WebSocktClient {
 
     public fun open(url: String)
 

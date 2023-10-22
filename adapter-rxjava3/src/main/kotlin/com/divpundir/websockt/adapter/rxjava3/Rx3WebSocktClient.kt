@@ -1,14 +1,14 @@
 package com.divpundir.websockt.adapter.rxjava3
 
-import com.divpundir.websockt.WebSocketClient
+import com.divpundir.websockt.WebSocktClient
 import io.reactivex.rxjava3.annotations.CheckReturnValue
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
-public interface Rx3WebSocketClient {
+public interface Rx3WebSocktClient {
 
     @get:CheckReturnValue
-    public val event: Flowable<WebSocketClient.Event>
+    public val event: Flowable<WebSocktClient.Event>
 
     @CheckReturnValue
     public fun open(url: String): Completable
