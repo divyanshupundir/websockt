@@ -1,13 +1,14 @@
 package com.divpundir.websockt.adapter.rxjava3
 
-import com.divpundir.websockt.WebSocketClient
 import com.divpundir.websockt.WebSocketFactory
 import com.divpundir.websockt.WebSockt
+import io.reactivex.rxjava3.core.Scheduler
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 public fun WebSockt.createRx3Client(
     factory: WebSocketFactory,
-    onFailure: WebSocketClient.FailureListener,
+    scheduler: Scheduler = Schedulers.io()
 ): Rx3WebSocketClient = Rx3WebSocketClientImpl(
     factory,
-    onFailure
+    scheduler
 )

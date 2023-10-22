@@ -8,11 +8,13 @@ public interface WebSocket {
 
     public sealed interface Event {
 
-        public object Open : Event
+        public data object Open : Event
 
         public data class Closing(val code: Int, val reason: String?) : Event
 
         public data class Close(val code: Int, val reason: String?) : Event
+
+        public data class Failure(val cause: Throwable) : Event
 
         public sealed interface Message : Event {
 
@@ -39,10 +41,5 @@ public interface WebSocket {
 
             public fun onEvent(event: Event)
         }
-    }
-
-    public fun interface FailureListener {
-
-        public fun onFailure(t: Throwable)
     }
 }
