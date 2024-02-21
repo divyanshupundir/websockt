@@ -1,15 +1,15 @@
 [versions]
-kotlin = "1.9.10"
+kotlin = "1.9.22"
 
 [libraries]
-kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3"
+kotlinx-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0"
 
 reactivex-rxjava2 = "io.reactivex.rxjava2:rxjava:2.2.21"
-reactivex-rxjava3 = "io.reactivex.rxjava3:rxjava:3.1.6"
+reactivex-rxjava3 = "io.reactivex.rxjava3:rxjava:3.1.8"
 
-okhttp = "com.squareup.okhttp3:okhttp:4.10.0"
+okhttp = "com.squareup.okhttp3:okhttp:4.12.0"
 
 [plugins]
 dokka = { id = "org.jetbrains.dokka", version = "1.9.10" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-mavenpublish = { id = "com.vanniktech.maven.publish.base", version = "0.24.0" }
+mavenpublish = { id = "com.vanniktech.maven.publish.base", version = "0.27.0" }
