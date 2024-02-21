@@ -2,16 +2,13 @@ package com.divpundir.websockt.adapter.coroutines
 
 import com.divpundir.websockt.WebSocktClient
 import com.divpundir.websockt.WebSocktFactory
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.launch
 
 internal class CoroutinesWebSocktClientImpl(
     factory: WebSocktFactory,
-    private val scope: CoroutineScope
 ) : CoroutinesWebSocktClient {
 
     private val _event = MutableSharedFlow<WebSocktClient.Event>(
@@ -21,7 +18,7 @@ internal class CoroutinesWebSocktClientImpl(
 
     private val delegate = WebSocktClient(
         factory = factory,
-        onEvent = { scope.launch { _event.emit(it) } }
+        onEvent = { _event.tryEmit(it) }
     )
 
     override val event: SharedFlow<WebSocktClient.Event> = _event.asSharedFlow()
