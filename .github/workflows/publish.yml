@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   publish-library:
-    runs-on: macos-13
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
