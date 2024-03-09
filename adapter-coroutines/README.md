@@ -24,7 +24,7 @@ dependencies {
 ```kotlin
 val factory = OkHttpWebSocktFactory(okHttpClient)
 
-val client = CoroutinesWebsocktClient(factory, viewModelScope)
+val client = CoroutinesWebsocktClient(factory)
 ```
 
 ### Opening a connection
